@@ -44,6 +44,7 @@ fun UniversitiesItem(
 
         Text(
             text = university.webPages ?: "-",
+            color = MaterialTheme.colorScheme.primary,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(MaterialTheme.colorScheme.onPrimary)

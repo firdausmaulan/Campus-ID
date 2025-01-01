@@ -20,7 +20,7 @@ class AppPreference(private val corePreference: ICorePreference) {
     }
 
     suspend fun getLastPage(): Int {
-        return corePreference.getInt(LAST_PAGE) ?: 1
+        return corePreference.getInt(LAST_PAGE) ?: 0
     }
 
 }

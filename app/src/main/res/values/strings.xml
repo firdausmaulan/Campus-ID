@@ -21,4 +21,8 @@
     <string name="action_no">No</string>
     <string name="action_back">Back</string>
     <string name="action_retry">Retry</string>
+
+    <!-- Error Message -->
+    <string name="failed_download_message">Download failed.</string>
+    <string name="failed_download_sub_message">Do you want to retry?</string>
 </resources>

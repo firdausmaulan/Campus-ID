@@ -61,10 +61,11 @@ fun UniversitiesScreen(
                 ) {
                     DebounceSearchBar(
                         onSearch = { query ->
-                            viewModel.search(query)
+                            viewModel.search(query.trim())
                         },
                         onClosed = {
                             viewModel.toggleSearch()
+                            viewModel.reload()
                         }
                     )
                 }

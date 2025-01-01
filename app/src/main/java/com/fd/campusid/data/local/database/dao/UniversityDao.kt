@@ -17,7 +17,9 @@ interface UniversityDao {
 
     @Query(
         "SELECT * FROM t_universities " +
-                "WHERE :query = '' OR name LIKE '%' || :query || '%' " +
+                "WHERE :query = '' " +
+                "OR LOWER(name) LIKE '%' || LOWER(:query) || '%' " +
+                "OR LOWER(domains) LIKE '%' || LOWER(:query) || '%' " +
                 "ORDER BY name DESC " +
                 "LIMIT :limit OFFSET :offset"
     )

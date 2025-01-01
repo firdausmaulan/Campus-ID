@@ -25,8 +25,9 @@ class UniversityRepositoryImpl(
     }
 
     override suspend fun download(): RepositoryResult<DownloadUniversity> {
+        val offset = appPreference.getLastPage() * Constant.DEFAULT_LIMIT
         val request = UniversitiesRequest(
-            offset = appPreference.getLastPage()
+            offset = offset
         )
         val response = apiService.download(request)
         if (response is ApiResponse.Success) {
@@ -40,7 +41,7 @@ class UniversityRepositoryImpl(
             }
             val total = universityDbService.countAll()
             val downloadUniversity = DownloadUniversity(
-                page = request.offset,
+                page = offset,
                 total = total,
                 status = downloadStatus
             )
@@ -59,8 +60,11 @@ class UniversityRepositoryImpl(
     }
 
     override suspend fun search(query: String, page: Int): RepositoryResult<List<University>> {
-        val universityEntities =
-            universityDbService.getAll(query, page * Constant.DEFAULT_LIMIT, Constant.DEFAULT_LIMIT)
+        val universityEntities = universityDbService.getAll(
+            query = query,
+            offset = page * Constant.DEFAULT_LIMIT,
+            limit = Constant.DEFAULT_LIMIT
+        )
         val universities = UniversityMapper.mapToRepositoryModelList(universityEntities)
         return RepositoryResult.Success(universities)
     }

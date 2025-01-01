@@ -28,7 +28,7 @@ class UniversitiesViewModel(private val universityRepository: UniversityReposito
 
     fun search(query: String) {
         this.query = query
-        currentPage = 1
+        currentPage = 0
         canLoadMore = true
         loadUniversities()
     }

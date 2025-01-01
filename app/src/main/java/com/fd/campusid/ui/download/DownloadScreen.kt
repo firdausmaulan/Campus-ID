@@ -4,7 +4,9 @@ import LoadingScreen
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.fd.campusid.R
 import com.fd.campusid.data.repository.university.FakeUniversityRepositoryImpl
 import com.fd.campusid.ui.common.ConfirmationBottomSheet
 import com.fd.campusid.ui.theme.CampusIDTheme
@@ -25,8 +27,8 @@ fun DownloadScreen(
             is DownloadState.Error -> {
                 LoadingScreen(viewModel.inProgressMessage)
                 ConfirmationBottomSheet(
-                    title = "Download Failed",
-                    message = "Do you want to retry?",
+                    title = stringResource(R.string.failed_download_message),
+                    message = stringResource(R.string.failed_download_sub_message),
                     onConfirmClick = { viewModel.downloadUniversities() },
                     onDismissClick = { navigateToUniversities() }
                 )

@@ -1,10 +1,14 @@
 package com.fd.campusid.ui.universities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.fd.campusid.data.repository.university.model.University
+import com.fd.campusid.helper.Constant
+import com.fd.campusid.helper.PermissionHelper
+import com.fd.campusid.ui.browser.BrowserActivity
 import com.fd.campusid.ui.theme.CampusIDTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -28,9 +32,13 @@ class UniversitiesActivity : ComponentActivity() {
                 )
             }
         }
+        PermissionHelper.requestNotificationPermission(this)
     }
 
     private fun navigateToDetails(university: University) {
-        TODO("Not yet implemented")
+        val intent = Intent(this, BrowserActivity::class.java)
+        intent.putExtra(Constant.KEY_TITLE, university.name)
+        intent.putExtra(Constant.KEY_URL, university.webPages)
+        startActivity(intent)
     }
 }

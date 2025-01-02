@@ -46,6 +46,6 @@ class DownloadViewModel(private val universityRepository: UniversityRepository) 
     }
 
     private fun getInProgressMessage(download: DownloadUniversity) {
-        inProgressMessage = "${download.total} universities downloaded from ${download.page} page"
+        inProgressMessage = "${download.total} universities downloaded"
     }
 }

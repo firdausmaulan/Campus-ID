@@ -17,4 +17,8 @@ class FakeUniversityRepositoryImpl : UniversityRepository {
     override suspend fun search(query: String, page: Int): RepositoryResult<List<University>> {
         TODO("Not yet implemented")
     }
+
+    override suspend fun refreshDelay() {
+        TODO("Not yet implemented")
+    }
 }

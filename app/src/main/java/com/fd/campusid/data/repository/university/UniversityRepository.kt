@@ -8,4 +8,5 @@ interface UniversityRepository {
     suspend fun isDownloadCompleted(): Boolean
     suspend fun download(): RepositoryResult<DownloadUniversity>
     suspend fun search(query: String, page : Int): RepositoryResult<List<University>>
+    suspend fun refreshDelay()
 }

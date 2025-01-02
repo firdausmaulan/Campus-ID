@@ -12,6 +12,7 @@ import com.fd.campusid.data.repository.university.model.University
 import com.fd.campusid.helper.Constant
 import com.fd.campusid.helper.StatusCode
 import com.fd.campusid.ui.download.DownloadStatus
+import kotlinx.coroutines.delay
 
 class UniversityRepositoryImpl(
     private val apiService: UniversityApiService,
@@ -41,7 +42,7 @@ class UniversityRepositoryImpl(
             }
             val total = universityDbService.countAll()
             val downloadUniversity = DownloadUniversity(
-                page = offset,
+                offset = offset,
                 total = total,
                 status = downloadStatus
             )
@@ -67,5 +68,9 @@ class UniversityRepositoryImpl(
         )
         val universities = UniversityMapper.mapToRepositoryModelList(universityEntities)
         return RepositoryResult.Success(universities)
+    }
+
+    override suspend fun refreshDelay() {
+        delay(1000)
     }
 }

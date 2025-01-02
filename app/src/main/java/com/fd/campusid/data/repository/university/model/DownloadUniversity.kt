@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class DownloadUniversity(
-    @SerialName("page")
-    var page: Int? = null,
+    @SerialName("offset")
+    var offset: Int? = null,
     @SerialName("total")
     var total: Int? = null,
     @SerialName("status")

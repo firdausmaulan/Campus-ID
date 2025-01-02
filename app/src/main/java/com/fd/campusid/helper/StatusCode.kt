@@ -4,4 +4,5 @@ object StatusCode {
     const val SUCCESS = 200
     const val BAD_REQUEST = 400
     const val SERVER_ERROR = 500
+    const val DUMMY_ERROR = -1
 }

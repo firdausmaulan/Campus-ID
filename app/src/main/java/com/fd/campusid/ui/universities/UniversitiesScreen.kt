@@ -66,7 +66,7 @@ fun UniversitiesScreen(
                             viewModel.search(query.trim())
                         },
                         onClosed = {
-                            viewModel.toggleSearch()
+                            viewModel.hideSearch()
                             viewModel.reload()
                         }
                     )
@@ -84,7 +84,7 @@ fun UniversitiesScreen(
                             modifier = Modifier
                                 .padding(end = 8.dp)
                                 .clickable {
-                                    viewModel.toggleSearch()
+                                    viewModel.showSearch()
                                 }
                         )
                     }
@@ -99,7 +99,10 @@ fun UniversitiesScreen(
                 .pullToRefresh(
                     state = pullRefreshState,
                     isRefreshing = viewModel.isRefreshing,
-                    onRefresh = { viewModel.reload() }
+                    onRefresh = {
+                        viewModel.hideSearch()
+                        viewModel.reload()
+                    }
                 )
         ) {
             Column(

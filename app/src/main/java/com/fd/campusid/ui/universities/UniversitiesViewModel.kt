@@ -22,8 +22,12 @@ class UniversitiesViewModel(private val universityRepository: UniversityReposito
 
     var isSearch by mutableStateOf(false)
 
-    fun toggleSearch() {
-        isSearch = !isSearch
+    fun showSearch() {
+        isSearch = true
+    }
+
+    fun hideSearch() {
+        isSearch = false
     }
 
     fun search(query: String) {
@@ -38,7 +42,7 @@ class UniversitiesViewModel(private val universityRepository: UniversityReposito
         search("")
         // delay 1 second to simulate refresh
         viewModelScope.launch {
-            delay(1000)
+            universityRepository.refreshDelay()
             isRefreshing = false
         }
     }
